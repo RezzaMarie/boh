@@ -1,0 +1,5 @@
+read_azienda:select *, '' tipo from azienda;
+create_azienda:insert into azienda ([CHIAVI]) values ([VALORI]);
+update_azienda:update azienda set [MODIFICHE] where id = ?;
+delete_azienda:delete from azienda where id = ?;
+maxid_azienda:select max(id) id from azienda;
