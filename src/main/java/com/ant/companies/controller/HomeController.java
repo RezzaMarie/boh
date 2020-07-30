@@ -39,66 +39,70 @@ public class HomeController {
 	
 	@Autowired 
 	private Map<String, String> query;
-	
-	@GetMapping("/aziende")
-	public List<Azienda> getAziende() {
-//		String q = query.get("read_aziende");
-		//return dao.listaziende(q, Azienda.class);
-		List<Azienda> ris = dao.listazienda();
-		System.out.println(ris);
-		return ris;
-	}
 
+	@GetMapping("/aziende")
+	public List<Entity> getAzienda() {
+		String q = query.get("read_aziende");
+		return dao.list(q, Azienda.class);
+	}
+	
 	@GetMapping("/aziende/{id}")
 	public Entity get(@PathVariable int id) {
 		String q = query.get("read_aziende");
 		return dao.search(id, q, Azienda.class);
 	}
 	
-	@PostMapping
+	@PostMapping("/aziende")
 	public void post(@RequestBody Azienda azienda) {
 		String q = query.get("create_aziende");
 		dao.load(azienda, q);
 	}
 	
-	@DeleteMapping("aziendedelete/{id}")
+	@DeleteMapping("aziende/{id}")
 	public void delete(@PathVariable int id) {
 		String q = query.get("delete_aziende");
 		dao.delete(id , q);
 	}
 	
-	@PutMapping
+	@PutMapping("/aziende")
 	public void put(@RequestBody Azienda azienda) {
 		String q = query.get("update_aziende");
 		dao.load(azienda, q);
 	}
 	
 	@GetMapping("/status")
-	public List<Status> getStatus() {
-		List<Status> ris = dao.liststatus();
-		System.out.println(ris);
-		return ris;
+	public List<Entity> getStatus() {
+		String q = query.get("read_status");
+		return dao.list(q, Status.class);
+	}
+	
+	@GetMapping("/status/{id}")
+	public Entity getStatus(@PathVariable int id) {
+		String q = query.get("read_status");
+		return dao.search(id, q, Status.class);
 	}
 	
 	@GetMapping("/dipendenti")
-	public List<Dipendente> getDipendenti() {
-		List<Dipendente> ris = dao.listdipendenti();
-		System.out.println(ris);
-		return ris;
+	public List<Entity> getDipendenti() {
+		String q = query.get("read_dipendenti");
+		return dao.list(q, Dipendente.class);
+	}
+	
+	@GetMapping("/dipendenti/{id}")
+	public Entity getDipendente(@PathVariable int id) {
+		String q = query.get("read_dipendenti");
+		return dao.search(id, q, Dipendente.class);
 	}
 	
 	@GetMapping("/persone")
-	public List<Persona> getPersone() {
-		List<Persona> ris = dao.listpersone();
-		System.out.println(ris);
-		return ris;
+	public List<Entity> getPersone() {
+		String q = query.get("read_persone");
+		return dao.list(q, Persona.class);
+	}
+	@GetMapping("/persone/{id}")
+	public Entity getPersone(@PathVariable int id) {
+		String q = query.get("read_persone");
+		return dao.search(id, q, Persona.class);
 	}
 	
-	@GetMapping("/pers")
-	public List<Persona> getPere() {
-		List<Persona> ris = dao.listpersone();
-		System.out.println(ris);
-		return ris;
-	}
-
 }
