@@ -93,5 +93,12 @@ public class HomeController {
 		System.out.println(ris);
 		return ris;
 	}
+	
+	@GetMapping("/pers")
+	public List<Persona> getPere() {
+		List<Persona> ris = dao.listpersone();
+		System.out.println(ris);
+		return ris;
+	}
 
 }
