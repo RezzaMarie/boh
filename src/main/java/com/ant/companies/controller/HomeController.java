@@ -58,18 +58,17 @@ public class HomeController {
 		dao.load(azienda, q);
 	}
 	
-	@DeleteMapping("aziende/{id}")
+	@DeleteMapping("/aziende/{id}")
 	public void delete(@PathVariable int id) {
 		String q = query.get("delete_aziende");
 		dao.delete(id , q);
 	}
 	
-	@PutMapping("/aziende/{id}")
+	@PutMapping("/aziende")
 	public void put(@RequestBody Azienda azienda) {
 		String q = query.get("update_aziende");
 		dao.load(azienda, q);
 	}
-	
 	
 	@GetMapping("/status")
 	public List<Entity> getStatus() {
@@ -81,6 +80,24 @@ public class HomeController {
 	public Entity getStatus(@PathVariable int id) {
 		String q = query.get("read_status");
 		return dao.search(id, q, Status.class);
+	}
+	
+	@DeleteMapping("/status/{id}")
+	public void deleteStatus(@PathVariable int id) {
+		String q = query.get("delete_status");
+		dao.delete(id , q);
+	}
+	
+	@PostMapping("/status")
+	public void post(@RequestBody Status status) {
+		String q = query.get("create_status");
+		dao.load(status, q);
+	}
+	
+	@PutMapping("/status")
+	public void put(@RequestBody Status status) {
+		String q = query.get("update_status");
+		dao.load(status, q);
 	}
 	
 	@GetMapping("/dipendenti")
@@ -95,6 +112,24 @@ public class HomeController {
 		return dao.search(id, q, Dipendente.class);
 	}
 	
+	@DeleteMapping("/dipendenti/{id}")
+	public void deleteDipendente(@PathVariable int id) {
+		String q = query.get("delete_dipendenti");
+		dao.delete(id , q);
+	}
+	
+	@PostMapping("/dipendenti")
+	public void post(@RequestBody Dipendente dipendente) {
+		String q = query.get("create_dipendenti");
+		dao.load(dipendente, q);
+	}
+	
+	@PutMapping("/dipendenti")
+	public void put(@RequestBody Dipendente dipendente) {
+		String q = query.get("update_dipendenti");
+		dao.load(dipendente, q);
+	}
+	
 	@GetMapping("/persone")
 	public List<Entity> getPersone() {
 		String q = query.get("read_persone");
@@ -106,4 +141,21 @@ public class HomeController {
 		return dao.search(id, q, Persona.class);
 	}
 	
+	@DeleteMapping("/persone/{id}")
+	public void deletePersona(@PathVariable int id) {
+		String q = query.get("delete_persone");
+		dao.delete(id , q);
+	}
+	
+	@PostMapping("/persone")
+	public void post(@RequestBody Persona persona) {
+		String q = query.get("create_persone");
+		dao.load(persona, q);
+	}
+	
+	@PutMapping("/persone")
+	public void put(@RequestBody Persona persona) {
+		String q = query.get("update_persone");
+		dao.load(persona, q);
+	}
 }
