@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ant.companies.model.dao.DaoGeneric;
 import com.ant.companies.model.entities.Azienda;
+import com.ant.companies.model.entities.Dipendente;
+import com.ant.companies.model.entities.Persona;
+import com.ant.companies.model.entities.Status;
 import com.ant.utility.model.database.Database;
 import com.ant.utility.model.entities.Entity;
 
@@ -37,11 +41,14 @@ public class HomeController {
 	private Map<String, String> query;
 	
 	@GetMapping("/aziende")
-	public List<Entity> get() {
-		String q = query.get("read_aziende");
-		return dao.list(q, Azienda.class);
+	public List<Azienda> getAziende() {
+//		String q = query.get("read_aziende");
+		//return dao.listaziende(q, Azienda.class);
+		List<Azienda> ris = dao.listazienda();
+		System.out.println(ris);
+		return ris;
 	}
-	
+
 	@GetMapping("/aziende/{id}")
 	public Entity get(@PathVariable int id) {
 		String q = query.get("read_aziende");
@@ -65,4 +72,26 @@ public class HomeController {
 		String q = query.get("update_aziende");
 		dao.load(azienda, q);
 	}
+	
+	@GetMapping("/status")
+	public List<Status> getStatus() {
+		List<Status> ris = dao.liststatus();
+		System.out.println(ris);
+		return ris;
+	}
+	
+	@GetMapping("/dipendenti")
+	public List<Dipendente> getDipendenti() {
+		List<Dipendente> ris = dao.listdipendenti();
+		System.out.println(ris);
+		return ris;
+	}
+	
+	@GetMapping("/persone")
+	public List<Persona> getPersone() {
+		List<Persona> ris = dao.listpersone();
+		System.out.println(ris);
+		return ris;
+	}
+
 }

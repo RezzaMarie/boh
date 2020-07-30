@@ -20,6 +20,54 @@ public class Azienda extends Entity {
 
 
 
+	public String getNome() {
+		return nome;
+	}
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+
+
+	public String getTel() {
+		return tel;
+	}
+
+
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
 	@Override
 	public boolean valid() {
 		// TODO Auto-generated method stub
@@ -28,7 +76,7 @@ public class Azienda extends Entity {
 
 	@Override
 	public String toString() {
-		return "nome:" + nome + ", indirizzo:" + indirizzo + ", tel:" + tel + ", email:" + email + "]";
+		return "id: " + getId() + " nome: " + nome + ", indirizzo:" + indirizzo + ", tel:" + tel + ", email:" + email + "]";
 	}
 	
 	

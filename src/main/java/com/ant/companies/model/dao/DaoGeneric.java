@@ -7,6 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import com.ant.companies.model.entities.Azienda;
+import com.ant.companies.model.entities.Dipendente;
+import com.ant.companies.model.entities.Persona;
+import com.ant.companies.model.entities.Status;
 import com.ant.utility.model.database.IDatabase;
 import com.ant.utility.model.entities.Entity;
 import com.ant.utility.model.entities.SmartList;
@@ -20,6 +24,7 @@ public class DaoGeneric
 	private ApplicationContext context;
 	
 	private String READ;
+	
 	
 	public DaoGeneric() {}
 	
@@ -47,6 +52,60 @@ public class DaoGeneric
         }
         return ris;
     }
+	
+	public List<Azienda> listazienda()
+    {
+        List<Azienda> ris = new SmartList<Azienda>();
+
+        for(Map<String,String> riga : db.rows("select *, 'azienda' tipo from aziende;"))
+        {
+        //  System.out.print(context == null);
+            Azienda e = new Azienda();
+            e.fromMap(riga);
+            ris.add(e);
+        }
+        return ris;
+    }
+	
+	public List<Status> liststatus()
+    {
+        List<Status> ris = new SmartList<Status>();
+
+        for(Map<String,String> riga : db.rows("select *, 'status' tipo from status;"))
+        {
+        	Status e = new Status();
+            e.fromMap(riga);
+            ris.add(e);
+        }
+        return ris;
+    }
+	
+	public List<Dipendente> listdipendenti()
+    {
+        List<Dipendente> ris = new SmartList<Dipendente>();
+
+        for(Map<String,String> riga : db.rows("select *, 'dipendente' tipo from dipendenti;"))
+        {
+        	Dipendente e = new Dipendente();
+            e.fromMap(riga);
+            ris.add(e);
+        }
+        return ris;
+    }
+	
+	public List<Persona> listpersone()
+    {
+        List<Persona> ris = new SmartList<Persona>();
+
+        for(Map<String,String> riga : db.rows("select *, 'persona' tipo from persone;"))
+        {
+        	Persona e = new Persona();
+            e.fromMap(riga);
+            ris.add(e);
+        }
+        return ris;
+    }
+	
 	
 	public Entity load(Entity e, String query) throws NullPointerException 
 	{
@@ -109,4 +168,6 @@ public class DaoGeneric
                 return e;
         return null;
     }
+	
+	
 }
