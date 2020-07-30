@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ant.companies.model.entities.Azienda;
 import com.ant.companies.model.entities.Dipendente;
@@ -57,6 +58,7 @@ public class DaoGeneric
 	public Entity load(Entity e, String query) throws NullPointerException 
 	{
 		Map<String,String> mappa = e.toMap();
+		
 		if(query.startsWith("insert"))
 		{
 			String chiavi = _StringFromMap(mappa.keySet()).replace("'", "");
@@ -73,11 +75,11 @@ public class DaoGeneric
 		{
 			String modifiche = _StringFromMap(mappa);
 			String update = query.replace("[MODIFICHE]", modifiche);
+			System.out.print(update);
 			int ris = db.execute(update, e.getId()+"");
 			if(ris == -200)
 				return e;
 		}
-		
 		return null;
 	}
 	

@@ -64,11 +64,12 @@ public class HomeController {
 		dao.delete(id , q);
 	}
 	
-	@PutMapping("/aziende")
+	@PutMapping("/aziende/{id}")
 	public void put(@RequestBody Azienda azienda) {
 		String q = query.get("update_aziende");
 		dao.load(azienda, q);
 	}
+	
 	
 	@GetMapping("/status")
 	public List<Entity> getStatus() {

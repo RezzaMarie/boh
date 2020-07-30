@@ -26,11 +26,11 @@ public class Context
 	@Bean
 	public IDatabase db()
 	{
-		IDatabase db = new Database("jdbc:mysql://localhost:3306/companies","root","root");
+		IDatabase db = new Database("jdbc:mysql://localhost:3306/companies","root","erikoot");
 		return db;
 	}
 
-    private String PATH= "C:\\Users\\Zaza\\eclipse-workspace2\\companies\\src\\main\\resources\\static\\queries.txt";
+    private String PATH= "C:\\Users\\erike\\Desktop\\corso formativo\\0729\\boh\\src\\main\\resources\\static\\queries.txt";
     
 	@Bean(name = "query")
 	@Primary
