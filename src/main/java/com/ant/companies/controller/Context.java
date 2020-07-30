@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
-import com.ant.companies.model.Azienda;
-import com.ant.companies.model.Dipendente;
-import com.ant.companies.model.Persona;
-import com.ant.companies.model.Status;
 import com.ant.companies.model.dao.DaoGeneric;
+import com.ant.companies.model.entities.Azienda;
+import com.ant.companies.model.entities.Dipendente;
+import com.ant.companies.model.entities.Persona;
+import com.ant.companies.model.entities.Status;
 import com.ant.utility.model.database.Database;
 import com.ant.utility.model.database.IDatabase;
 import com.ant.utility.model.entities.ConsoleApp;

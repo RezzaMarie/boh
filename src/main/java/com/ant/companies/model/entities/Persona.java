@@ -1,4 +1,4 @@
-package com.ant.companies.model;
+package com.ant.companies.model.entities;
 
 import java.util.Date;
 
